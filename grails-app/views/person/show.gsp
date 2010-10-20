@@ -5,7 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'person.label', default: 'Person')}"/>
-		<title><g:message code="default.show.label" args="[entityName]"/></title>
+		<title><g:message code="default.show.label" args="[entityName]" default="Show {0}"/></title>
 	</head>
 	<body>
 		<nav>
