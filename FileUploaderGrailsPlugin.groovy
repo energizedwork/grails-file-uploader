@@ -1,3 +1,5 @@
+import grails.plugin.fileuploader.ImageEditorRegistrar
+
 class FileUploaderGrailsPlugin {
 
     def version = "0.1"
@@ -21,6 +23,7 @@ Brief description of the plugin.
     }
 
     def doWithSpring = {
+		imageEditorRegistrar(ImageEditorRegistrar)
     }
 
     def doWithDynamicMethods = { ctx ->
