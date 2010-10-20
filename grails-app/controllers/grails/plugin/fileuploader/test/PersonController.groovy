@@ -36,40 +36,4 @@ class PersonController {
 		}
 	}
 
-	def save = {
-		def personInstance = new Person(params)
-		if (personInstance.save(flush: true)) {
-			flash.message = "${message(code: 'default.created.message', args: [message(code: 'person.label', default: 'Person'), personInstance.id])}"
-			redirect(action: "show", id: personInstance.id)
-		} else {
-			render(view: "create", model: [personInstance: personInstance])
-		}
-	}
-
-	def update = {
-		def personInstance = Person.get(params.id)
-		if (personInstance) {
-			if (params.version) {
-				def version = params.version.toLong()
-				if (personInstance.version > version) {
-					personInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'person.label', default: 'Person')] as Object[], "Another user has updated this Person while you were editing")
-					render(view: "edit", model: [personInstance: personInstance])
-					return
-				}
-			}
-			println "just before bind, $params"
-			personInstance.properties = params
-			println "after bind"
-			if (!personInstance.hasErrors() && personInstance.save(flush: true)) {
-				flash.message = "${message(code: 'default.updated.message', args: [message(code: 'person.label', default: 'Person'), personInstance.id])}"
-				redirect(action: "show", id: personInstance.id)
-			} else {
-				render(view: "edit", model: [personInstance: personInstance])
-			}
-		} else {
-			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'person.label', default: 'Person'), params.id])}"
-			redirect(action: "list")
-		}
-	}
-
 }
