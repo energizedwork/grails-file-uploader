@@ -16,8 +16,9 @@ class ImageEditor extends PropertyEditorSupport {
 
 	private Image createImage(MultipartFile file) {
 		if (file.empty) {
-			null
+			println "got empty file, doing nothing"
 		} else {
+			println "got some data, creating image"
 			def image = new Image()
 			image.data = file.bytes
 			image.contentType = file.contentType

@@ -26,7 +26,7 @@
 				<dt><g:message code="person.name.label" default="Name"/></dt>
 				<dd>${fieldValue(bean: personInstance, field: "name")}</dd>
 				<dt><g:message code="person.photo.label" default="Photo"/></dt>
-				<dd><img src="${createLink(controller: 'person', action: 'thumbnail', id: personInstance.id)}"></dd>
+				<dd><img style="max-height: 250px; max-width: 250px" src="${createLink(controller: 'person', action: 'thumbnail', id: personInstance.id)}"></dd>
 			</dl>
 			<fieldset class="buttons">
 				<g:form>
